@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Libelle:</strong>
+  <%= @poste.libelle %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @poste.code %>
+</p>
+
+<%= link_to 'Edit', edit_poste_path(@poste) %> |
+<%= link_to 'Back', postes_path %>

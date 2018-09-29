@@ -1,0 +1,22 @@
+This file is my own roadmap for development 
+fixe constante app to 1 manager 2 vétérinaires et 5 gardiens
+rails g scaffold Poste libelle code # manager, vétérinaire, gardien, admin
+#add devise
+rails g migration  add_profil_id_column_to_users poste_id:integer
+#add belongs_to: poste on user model
+rails g migration add_multiple_column_to_users code prenom nom date_de_naissance:date
+
+rails g scaffold TypeAnimal libelle code #crocodile, lion, hippopotame, tigre, singe.
+
+rails g scaffold Animal nom code type_animal:references
+
+# add paperclip for animal picture 
+
+# generate migration for attachement file
+
+rails g scaffold StatutTache libelle code # creer , a faire , fini 
+
+rails g scaffold TypeTache libelle code # nourir , soigner  
+
+rails g scaffold Tache libelle code detail_tache:text animal:references user:references cree_par:string date_debut_tache:datetime date_fin_tache:datetime statut_tache:references type_tache:references
+
