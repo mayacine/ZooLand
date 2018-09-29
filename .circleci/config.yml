@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/ZooLand
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/ruby:2.3.3
         environment:
           PGHOST: localhost
           PGUSER: postgres
