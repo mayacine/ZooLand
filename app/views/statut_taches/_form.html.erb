@@ -1,0 +1,27 @@
+<%= form_with(model: statut_tach, local: true) do |form| %>
+  <% if statut_tach.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(statut_tach.errors.count, "error") %> prohibited this statut_tach from being saved:</h2>
+
+      <ul>
+      <% statut_tach.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :libelle %>
+    <%= form.text_field :libelle, id: :statut_tach_libelle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code, id: :statut_tach_code %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

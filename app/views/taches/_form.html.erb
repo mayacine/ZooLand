@@ -1,0 +1,67 @@
+<%= form_with(model: tach, local: true) do |form| %>
+  <% if tach.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tach.errors.count, "error") %> prohibited this tach from being saved:</h2>
+
+      <ul>
+      <% tach.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :libelle %>
+    <%= form.text_field :libelle, id: :tach_libelle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code, id: :tach_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :detail_tache %>
+    <%= form.text_area :detail_tache, id: :tach_detail_tache %>
+  </div>
+
+  <div class="field">
+    <%= form.label :animal_id %>
+    <%= form.text_field :animal_id, id: :tach_animal_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :tach_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cree_par %>
+    <%= form.text_field :cree_par, id: :tach_cree_par %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_debut %>
+    <%= form.datetime_select :date_debut, id: :tach_date_debut %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_fin %>
+    <%= form.datetime_select :date_fin, id: :tach_date_fin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :statut_tache_id %>
+    <%= form.text_field :statut_tache_id, id: :tach_statut_tache_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type_tache_id %>
+    <%= form.text_field :type_tache_id, id: :tach_type_tache_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

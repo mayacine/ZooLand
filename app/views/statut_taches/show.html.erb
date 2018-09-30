@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Libelle:</strong>
+  <%= @statut_tach.libelle %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @statut_tach.code %>
+</p>
+
+<%= link_to 'Edit', edit_statut_tach_path(@statut_tach) %> |
+<%= link_to 'Back', statut_taches_path %>

@@ -1,0 +1,27 @@
+<%= form_with(model: type_animal, local: true) do |form| %>
+  <% if type_animal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(type_animal.errors.count, "error") %> prohibited this type_animal from being saved:</h2>
+
+      <ul>
+      <% type_animal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :libelle %>
+    <%= form.text_field :libelle, id: :type_animal_libelle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code, id: :type_animal_code %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+class StatutTache < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class TypeTache < ApplicationRecord
+end

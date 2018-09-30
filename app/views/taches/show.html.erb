@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Libelle:</strong>
+  <%= @tach.libelle %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @tach.code %>
+</p>
+
+<p>
+  <strong>Detail tache:</strong>
+  <%= @tach.detail_tache %>
+</p>
+
+<p>
+  <strong>Animal:</strong>
+  <%= @tach.animal %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @tach.user %>
+</p>
+
+<p>
+  <strong>Cree par:</strong>
+  <%= @tach.cree_par %>
+</p>
+
+<p>
+  <strong>Date debut:</strong>
+  <%= @tach.date_debut %>
+</p>
+
+<p>
+  <strong>Date fin:</strong>
+  <%= @tach.date_fin %>
+</p>
+
+<p>
+  <strong>Statut tache:</strong>
+  <%= @tach.statut_tache %>
+</p>
+
+<p>
+  <strong>Type tache:</strong>
+  <%= @tach.type_tache %>
+</p>
+
+<%= link_to 'Edit', edit_tach_path(@tach) %> |
+<%= link_to 'Back', taches_path %>

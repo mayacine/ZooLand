@@ -1,0 +1,2 @@
+module TypeAnimalsHelper
+end

@@ -1,0 +1,34 @@
+<div class="container-fluid" id="login-page">
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'form-signin'}) do |f| %>
+      <h1 style='text-align: center' class="h3 mb-3 font-weight-normal">Accéder à Zooland</h1>
+ <div class="card">
+  <div class="card-body">
+    <%= f.label :email ,class: "sr-only"%><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"form-control", placeholder:"Email"%>
+
+
+
+    <%= f.label :password ,class: "sr-only"%><br />
+    <%= f.password_field :password, autocomplete: "current-password" , class:"form-control", placeholder:"Mot de passe"%>
+
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Connexion", class:"btn btn-lg btn-primary btn-block"%>
+  </div>
+
+<%# = render "devise/shared/links" %>
+<% end %>
+  </div>
+</div>
+    
+
+
+</div>

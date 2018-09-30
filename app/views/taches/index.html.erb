@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Taches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Libelle</th>
+      <th>Code</th>
+      <th>Detail tache</th>
+      <th>Animal</th>
+      <th>User</th>
+      <th>Cree par</th>
+      <th>Date debut</th>
+      <th>Date fin</th>
+      <th>Statut tache</th>
+      <th>Type tache</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @taches.each do |tach| %>
+      <tr>
+        <td><%= tach.libelle %></td>
+        <td><%= tach.code %></td>
+        <td><%= tach.detail_tache %></td>
+        <td><%= tach.animal %></td>
+        <td><%= tach.user %></td>
+        <td><%= tach.cree_par %></td>
+        <td><%= tach.date_debut %></td>
+        <td><%= tach.date_fin %></td>
+        <td><%= tach.statut_tache %></td>
+        <td><%= tach.type_tache %></td>
+        <td><%= link_to 'Show', tach %></td>
+        <td><%= link_to 'Edit', edit_tach_path(tach) %></td>
+        <td><%= link_to 'Destroy', tach, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tach', new_tach_path %>

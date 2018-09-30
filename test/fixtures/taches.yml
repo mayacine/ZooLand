@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  libelle: MyString
+  code: MyString
+  detail_tache: MyText
+  animal: one
+  user: one
+  cree_par: MyString
+  date_debut: 2018-09-30 19:05:25
+  date_fin: 2018-09-30 19:05:25
+  statut_tache: one
+  type_tache: one
+
+two:
+  libelle: MyString
+  code: MyString
+  detail_tache: MyText
+  animal: two
+  user: two
+  cree_par: MyString
+  date_debut: 2018-09-30 19:05:25
+  date_fin: 2018-09-30 19:05:25
+  statut_tache: two
+  type_tache: two

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Statut Taches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Libelle</th>
+      <th>Code</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @statut_taches.each do |statut_tach| %>
+      <tr>
+        <td><%= statut_tach.libelle %></td>
+        <td><%= statut_tach.code %></td>
+        <td><%= link_to 'Show', statut_tach %></td>
+        <td><%= link_to 'Edit', edit_statut_tach_path(statut_tach) %></td>
+        <td><%= link_to 'Destroy', statut_tach, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Statut Tach', new_statut_tach_path %>
