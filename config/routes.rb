@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :statut_taches
   resources :animals
   resources :type_animals
-  get 'dashboard/admin'
+  Poste.all.each do |profil|
+  get "dashboard/#{profil.code.downcase}"
+  end
 
   get 'welcome/index'
   root to: "welcome#index"

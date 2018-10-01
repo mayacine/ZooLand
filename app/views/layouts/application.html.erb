@@ -19,7 +19,11 @@
       <%= render "layouts/signed_header"%>
         <div class="container-fluid">
         <div class="row">
+        <%if !current_user.poste.nil?%>
+           <%=render  "layouts/#{current_user.poste.code.downcase}_menu"%>
+        <%else%>
           <%=render  "layouts/default_menu"%>
+        <%end%>
         <%#if notice%>
          
             <%#= notice %>
