@@ -1,27 +1,37 @@
 require 'test_helper'
 
-class AnimalsControllerTest < ActionDispatch::IntegrationTest
-  # setup do
-  #   @animal = animals(:one)
-  # end
+class AnimalsControllerTest <  Capybara::Rails::TestCase
+  include Devise::Test::IntegrationHelpers
+   setup do
+     @animal = animals(:one)
+     sign_in users(:bob)
+   end
 
-  # test "should get index" do
-  #   get animals_url
-  #   assert_response :success
-  # end
+   test "should get index" do
+      visit animals_path
+      assert_current_path animals_path
+   end
 
-  # test "should get new" do
-  #   get new_animal_url
-  #   assert_response :success
-  # end
+    test "should get new" do
+      visit new_animal_url
+      assert_current_path new_animal_url
+    end
 
-  # test "should create animal" do
-  #   assert_difference('Animal.count') do
-  #     post animals_url, params: { animal: { code: @animal.code, nom: @animal.nom, type_animal_id: @animal.type_animal_id } }
-  #   end
+    test "should create animal" do
+      visit animals_path
 
-  #   assert_redirected_to animal_url(Animal.last)
-  # end
+      click_on 'New Animal'
+
+      fill_in 'Nom', with: @animal.nom    
+      fill_in 'Code', with: @animal.code    
+      fill_in 'Type animal', with: @animal.type_animal_id    
+
+      click_on 'Create Animal'
+
+      assert_current_path animal_path(Animal.last)
+      assert page.has_content?(@animal.nom)
+      assert page.has_content?(@animal.code)
+    end
 
   # test "should show animal" do
   #   get animal_url(@animal)
