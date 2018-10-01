@@ -11,6 +11,8 @@ one:
   date_fin: 2018-09-30 19:05:25
   statut_tache: one
   type_tache: one
+  created_at: <%= Time.now.utc) %>
+  updated_at:  <%= Time.now.utc) %>
 
 two:
   libelle: MyString
@@ -23,3 +25,5 @@ two:
   date_fin: 2018-09-30 19:05:25
   statut_tache: two
   type_tache: two
+  created_at: <%= Time.now.utc) %>
+  updated_at:  <%= Time.now.utc) %>
