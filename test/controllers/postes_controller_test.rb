@@ -2,6 +2,9 @@ require 'test_helper'
 
 class PostesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @password = "password"
+    @confirmed_user = User.create(email: "admin@example.com", password: @password)
+    sign_in(@confirmed_user.email, @password)
     @poste = postes(:one)
   end
 

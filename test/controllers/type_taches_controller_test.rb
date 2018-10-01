@@ -3,6 +3,9 @@ require 'test_helper'
 class TypeTachesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @type_tach = type_taches(:one)
+    @password = "password"
+    @confirmed_user = User.create(email: "admin@example.com", password: @password)
+    sign_in(@confirmed_user.email, @password)
   end
 
   test "should get index" do

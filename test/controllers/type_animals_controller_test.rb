@@ -3,6 +3,9 @@ require 'test_helper'
 class TypeAnimalsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @type_animal = type_animals(:one)
+    @password = "password"
+    @confirmed_user = User.create(email: "admin@example.com", password: @password)
+    sign_in(@confirmed_user.email, @password)
   end
 
   test "should get index" do

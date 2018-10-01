@@ -4,13 +4,13 @@ one:
   libelle: MyString
   code: MyString
   detail_tache: MyText
-  animal: one
-  user: one
+  animal_id: one
+  user_id: one
   cree_par: MyString
   date_debut: 2018-09-30 19:05:25
   date_fin: 2018-09-30 19:05:25
-  statut_tache: one
-  type_tache: one
+  statut_tache_id: one
+  type_tache_id: one
   created_at: <%= Time.now.utc %>
   updated_at:  <%= Time.now.utc %>
 
@@ -18,12 +18,12 @@ two:
   libelle: MyString
   code: MyString
   detail_tache: MyText
-  animal: two
-  user: two
+  animal_id: two
+  user_id: two
   cree_par: MyString
   date_debut: 2018-09-30 19:05:25
   date_fin: 2018-09-30 19:05:25
-  statut_tache: two
-  type_tache: two
+  statut_tache_id: two
+  type_tache_id: two
   created_at: <%= Time.now.utc %>
   updated_at:  <%= Time.now.utc %>
