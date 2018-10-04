@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
+  
   resources :taches
   resources :type_taches
   resources :statut_taches
   resources :animals
   resources :type_animals
   #Poste.all.each do |profil|
- # get "dashboard/#{profil.code.downcase}"
- # end
- get "dashboard/admin"
- get "dashboard/index"
-
+  # get "dashboard/#{profil.code.downcase}"
+  # end
+  get "dashboard/admin"
+  get "dashboard/index"
+  get "dashboard/manager"
+  get "dashboard/veterinaire"
+  get "dashboard/gardien"
+  
+  get 'employe/new'
+  post 'employe/create', to: 'employe#create'
   get 'welcome/index'
   root to: "welcome#index"
   #devise_for :users

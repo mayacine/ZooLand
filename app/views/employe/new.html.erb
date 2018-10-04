@@ -1,0 +1,68 @@
+
+<div class="card col-md-12" >
+  <div class="card-body">
+    <h5 class="card-title">Créer un employé</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Formulaire</h6>
+    <%= form_for(@user, url: "/employe/create") do |form| %>
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <%= form.label :prénom %>
+      
+       <%= form.text_field :prenom, id: :user_prenom, class: "form-control" %>
+    </div>
+   <div class="form-group col-md-4">
+      <%= form.label :nom %>
+    <%= form.text_field :nom, id: :user_nom,  class: "form-control" %>
+    </div>
+     <div class="form-group col-md-4">
+      <%= form.label :date_de_naissance %>
+    <%= form.date_field :date_de_naissance, id: :user_date_de_naissance,  class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <%= form.label :email %>
+      
+       <%= form.email_field :email, id: :user_email, class: "form-control" %>
+    </div>
+   <div class="form-group col-md-4">
+      <%= form.label :mot_de_passe %>
+    <%= form.password_field :password, id: :user_password,  class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :confirmation %>
+    <%= form.password_field :password_confirmation, id: :user_password_confirmation,  class: "form-control" %>
+    </div>
+    
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= form.label :poste %>
+      
+      <%= form.collection_select(:poste_id, Poste.poste_find_by_current_user(current_user), :id, :libelle,{}, {:class => 'form-control'}) %>
+    </div>
+   
+
+  </div>
+
+ 
+  
+  <%= form.submit 'Créer Employé', class: 'btn btn-primary' %>
+<% end %>
+
+  </div>
+</div>
+
