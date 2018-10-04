@@ -25,7 +25,7 @@ class TypeTachesController < ApplicationController
   # POST /type_taches.json
   def create
     @type_tach = TypeTache.new(type_tach_params)
-
+    @type_tach.code = generateur_de_code(7)
     respond_to do |format|
       if @type_tach.save
         format.html { redirect_to @type_tach, notice: 'Type tache was successfully created.' }

@@ -25,7 +25,7 @@ class TypeAnimalsController < ApplicationController
   # POST /type_animals.json
   def create
     @type_animal = TypeAnimal.new(type_animal_params)
-
+    @type_animal.code = generateur_de_code(7)
     respond_to do |format|
       if @type_animal.save
         format.html { redirect_to @type_animal, notice: 'Type animal was successfully created.' }

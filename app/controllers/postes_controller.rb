@@ -25,7 +25,7 @@ class PostesController < ApplicationController
   # POST /postes.json
   def create
     @poste = Poste.new(poste_params)
-
+    @poste.code = generateur_de_code(7)
     respond_to do |format|
       if @poste.save
         format.html { redirect_to @poste, notice: 'Poste was successfully created.' }

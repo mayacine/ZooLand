@@ -8,3 +8,13 @@ MAX_VETERINAIRE = 2
 MAX_MANAGER = 1
 MAX_ADMIN = 1
 MIN_AGE_POUR_TRAVAILLER = 18
+# base = {creer: "Créee", a_faire: "A Faire", fini: "Finie"}
+
+CODE_TACHE_CREER = "CREER"
+CODE_TACHE_AFAIRE = "A_FAIRE"
+CODE_TACHE_FINI = "FINI"
+
+# base = {nourrir: "Nourrir", soigner: "Soigner"}
+
+CODE_TYPE_TACHE_NOURRIR = "NOURRIR"
+CODE_TYPE_TACHE_SOIGNER = "SOIGNER"

@@ -25,7 +25,8 @@ class TachesController < ApplicationController
   # POST /taches.json
   def create
     @tach = Tache.new(tach_params)
-
+    @tach.code = generateur_de_code(7)
+    @tach.statut_tache_id = StatutTache.find_by(code: CODE_TACHE_AFAIRE).id
     respond_to do |format|
       if @tach.save
         format.html { redirect_to @tach, notice: 'Tache was successfully created.' }
@@ -69,6 +70,6 @@ class TachesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tach_params
-      params.require(:tach).permit(:libelle, :code, :detail_tache, :animal_id, :user_id, :cree_par, :date_debut, :date_fin, :statut_tache_id, :type_tache_id)
+      params.require(:tache).permit(:libelle, :code, :detail_tache, :animal_id, :user_id, :cree_par, :date_debut, :date_fin, :statut_tache_id, :type_tache_id)
     end
 end

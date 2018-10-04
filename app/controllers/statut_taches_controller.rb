@@ -25,7 +25,7 @@ class StatutTachesController < ApplicationController
   # POST /statut_taches.json
   def create
     @statut_tach = StatutTache.new(statut_tach_params)
-
+    @statut_tach.code = generateur_de_code(7)
     respond_to do |format|
       if @statut_tach.save
         format.html { redirect_to @statut_tach, notice: 'Statut tache was successfully created.' }

@@ -1,5 +1,86 @@
-<h1>New Tach</h1>
 
-<%= render 'form', tach: @tach %>
 
-<%= link_to 'Back', taches_path %>
+<%#= render 'form', tach: @tach %>
+
+
+
+
+<div class="card col-md-12" >
+  <div class="card-body">
+    <h5 class="card-title">Créer une tâche</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Formulaire</h6>
+   <%= form_with(model: @tach, local: true) do |form| %>
+  <% if @tach.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tach.errors.count, "error") %> prohibited this tach from being saved:</h2>
+
+      <ul>
+      <% @tach.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+   
+   <div class="form-row">
+    <div class="form-group col-md-4">
+      <%= form.label :libelle %>
+    <%= form.text_field :libelle, id: :tach_libelle, class: "form-control"  %>
+    </div>
+  <div class="form-group col-md-4">
+      <%= form.label :animal %>
+      
+      <%= form.collection_select(:animal_id, Animal.all, :id, :nom,{}, {:class => 'form-control', id: 'animal-id'}) %>
+    </div>
+
+ <div class="form-group col-md-4">
+      <%= form.label :affecté_a %>
+      
+      <%= form.collection_select(:user_id, User.cible_affectation_by_poste, :id, :identification,{}, {:class => 'form-control', id: 'user-id'}) %>
+    </div>
+
+ 
+  </div>
+
+   <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= form.label :cree_par %>
+      <%=text_field_tag nil, :creer_by, value: current_user.identification,class: "form-control", readonly: :true %>
+    <%= form.hidden_field :cree_par, id: :cree_par,value: current_user.identification, class: "form-control"  %>
+    </div>
+  <div class="form-group col-md-6">
+      <%= form.label :type_tache_id %>
+      
+      <%= form.collection_select(:type_tache_id, TypeTache.all, :id, :libelle,{}, {:class => 'form-control', id: 'animal-id'}) %>
+    </div>
+ 
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+       <%= form.label :date_début %>
+        <%= form.datetime_select :date_debut, id: :tach_date_debut, class: "form-control"  %>
+    </div>
+  <div class="form-group col-md-6">
+       <%= form.label :date_fin %>
+        <%= form.datetime_select :date_fin, id: :tach_date_fin, class: "form-control"  %>
+    </div>
+ 
+  </div>
+
+
+  <div class="form-row">
+     <div class="form-group col-md-12">
+      <%= form.label :détail_tache %>
+    <%= form.text_area :detail_tache, id: :detail_tache, class: "form-control"  %>
+    </div>
+  </div>
+  
+  
+  <%= form.submit 'Créer Tâche', class: 'btn btn-primary',id: "creer-animal" %> <%= link_to 'Liste Tâches', taches_path,  {class: 'btn btn-warning'}%>
+<% end %>
+
+  </div>
+</div>
+

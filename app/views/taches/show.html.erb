@@ -1,54 +1,81 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Libelle:</strong>
-  <%= @tach.libelle %>
-</p>
+<div class="card col-md-12" >
+  <div class="card-body">
+    <h5 class="card-title">Tâche </h5>
+    <h6 class="card-subtitle mb-2 text-muted">Détails</h6>
+   <%= form_with(model: @tach, local: true) do |form| %>
+  <% if @tach.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tach.errors.count, "error") %> prohibited this tach from being saved:</h2>
 
-<p>
-  <strong>Code:</strong>
-  <%= @tach.code %>
-</p>
+      <ul>
+      <% @tach.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+   
+   <div class="form-row">
+    <div class="form-group col-md-4">
+      <%= form.label :libelle %>
+    <%= form.text_field :libelle, id: :tach_libelle, class: "form-control",readonly: :true  %>
+    </div>
+  <div class="form-group col-md-4">
+      <%= form.label :animal %>
+      
+     <%= form.text_field :animal_id, id: :tach_animal_id, value: @tach.animal.nom, class: "form-control",readonly: :true  %>
+    </div>
 
-<p>
-  <strong>Detail tache:</strong>
-  <%= @tach.detail_tache %>
-</p>
+ <div class="form-group col-md-4">
+      <%= form.label :affecté_a %>
+      
+     <%= form.text_field :user_id, id: :tach_user_id, value: @tach.user.identification, class: "form-control",readonly: :true  %>
+      </div>
 
-<p>
-  <strong>Animal:</strong>
-  <%= @tach.animal %>
-</p>
+ 
+  </div>
 
-<p>
-  <strong>User:</strong>
-  <%= @tach.user %>
-</p>
+   <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= form.label :cree_par %>
+      <%=text_field_tag nil, :creer_by, value: current_user.identification,class: "form-control", readonly: :true %>
+    <%= form.hidden_field :cree_par, id: :cree_par,value: current_user.identification, class: "form-control"  %>
+    </div>
+  <div class="form-group col-md-6">
+      <%= form.label :type_tache_id %>
+      <%= form.text_field :type_tache_id, id: :tach_type_tache_id, value: @tach.type_tache.libelle, class: "form-control",readonly: :true  %>
+     
+    </div>
+ 
+  </div>
 
-<p>
-  <strong>Cree par:</strong>
-  <%= @tach.cree_par %>
-</p>
 
-<p>
-  <strong>Date debut:</strong>
-  <%= @tach.date_debut %>
-</p>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+       <%= form.label :date_début %>
+        <%= form.text_field :date_debut, id: :tach_date_debut, class: "form-control", readonly: :true %>
+    </div>
+  <div class="form-group col-md-6">
+       <%= form.label :date_fin %>
+        <%= form.text_field :date_fin, id: :tach_date_fin, class: "form-control", readonly: :true  %>
+    </div>
+ 
+  </div>
 
-<p>
-  <strong>Date fin:</strong>
-  <%= @tach.date_fin %>
-</p>
 
-<p>
-  <strong>Statut tache:</strong>
-  <%= @tach.statut_tache %>
-</p>
+  <div class="form-row">
+     <div class="form-group col-md-12">
+      <%= form.label :détail_tache %>
+    <%= form.text_area :detail_tache, id: :detail_tache, class: "form-control", readonly: :true  %>
+    </div>
+  </div>
+  
+  
+  <%= link_to 'Editer', edit_tach_path(@tach) ,{class: 'btn btn-primary'}%> |
+<%= link_to 'Liste tâche', taches_path, {class: 'btn btn-warning'} %>
+<% end %>
 
-<p>
-  <strong>Type tache:</strong>
-  <%= @tach.type_tache %>
-</p>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_tach_path(@tach) %> |
-<%= link_to 'Back', taches_path %>
