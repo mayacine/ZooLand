@@ -45,7 +45,8 @@ end
 #########
 
 admin = User.find_by(email: 'admin@zooland.com') || User.new
-
+admin.prenom = "admin"
+admin.nom = "admin"
 admin.email = 'admin@zooland.com'
 admin.password = 'passer1234'
 admin.poste = Poste.find_by(code: 'ADMIN')

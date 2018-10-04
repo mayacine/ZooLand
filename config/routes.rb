@@ -14,8 +14,13 @@ Rails.application.routes.draw do
   get "dashboard/veterinaire"
   get "dashboard/gardien"
   
-  get 'employe/new'
-  post 'employe/create', to: 'employe#create'
+  get '/employe/new'
+  get '/employe', to: "employe#index"
+  get '/employe/:id', to: "employe#show"
+  get '/employe/:id/edit', to: "employe#edit"
+  post '/employe/create', to: 'employe#create'
+  put '/employe/:id', to: 'employe#update'
+  delete '/employe/:id', to: 'employe#destroy'
   get 'welcome/index'
   root to: "welcome#index"
   #devise_for :users

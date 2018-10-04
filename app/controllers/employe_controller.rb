@@ -2,7 +2,7 @@ class EmployeController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @user = User.find_by_current_user_poste(current_user)
+    @users = User.find_by_current_user_poste(current_user)
   end
 
   def new
@@ -29,9 +29,23 @@ class EmployeController < ApplicationController
   end 
 
   def update
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to "/employe", notice: 'Employe mis à jour avec succés' }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to "/employe", notice: 'Employé supprimé avec succés' }
+      format.json { head :no_content }
+    end
   end
 
   private

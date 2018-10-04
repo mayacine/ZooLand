@@ -1,19 +1,17 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nom:</strong>
-  <%= @animal.nom %>
-</p>
 
-<p>
-  <strong>Code:</strong>
-  <%= @animal.code %>
-</p>
+<div class="card" style="width: 18rem;">
+<div style="width: 18rem;">
+  <%= image_tag @animal.avatar.url(:thumb) , class:"card-img-top"%>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Fiche Animal</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Caractéristiques</h6>
+    <h5 class="card-title">Nom: <%= @animal.nom %></h5>
+    <p class="card-text">Code : <%= @animal.code %></p>
+    <p class="card-text">Type : <%= @animal.type_animal.libelle %></p>
 
-<p>
-  <strong>Type animal:</strong>
-  <%= @animal.type_animal %>
-</p>
-
-<%= link_to 'Edit', edit_animal_path(@animal) %> |
-<%= link_to 'Back', animals_path %>
+    <%= link_to 'Editer', edit_animal_path(@animal) , {class: "btn btn-primary"} %> |
+<%= link_to 'Retour', animals_path, {class: "btn btn-warning"} %>
+  </div>
+</div>

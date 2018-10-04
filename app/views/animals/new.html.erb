@@ -1,5 +1,47 @@
-<h1>New Animal</h1>
 
-<%= render 'form', animal: @animal %>
 
-<%= link_to 'Back', animals_path %>
+<div class="card col-md-12" >
+  <div class="card-body">
+    <h5 class="card-title">Créer un animal</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Formulaire</h6>
+   <%= form_with(model: @animal, local: true) do |form| %>
+  <% if @animal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
+
+      <ul>
+      <% @animal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+   
+   <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= form.label :photo %>
+    <%= form.file_field :avatar, id: 'avatar' %>
+    </div>
+  
+ 
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= form.label :nom %>
+    <%= form.text_field :nom, id: :animal_nom, class: "form-control" %>
+    </div>
+  
+  <div class="form-group col-md-6">
+      <%= form.label :type %>
+      
+      <%= form.collection_select(:type_animal_id, TypeAnimal.all, :id, :libelle,{}, {:class => 'form-control', id: 'type_animal'}) %>
+    </div>
+  </div>
+  
+  
+  <%= form.submit 'Créer Animal', class: 'btn btn-primary',id: "create-animal" %> <%= link_to 'Liste animaux', animals_path,  {class: 'btn btn-warning'}%>
+<% end %>
+
+  </div>
+</div>
+

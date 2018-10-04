@@ -20,13 +20,13 @@ class AnimalsControllerTest <  Capybara::Rails::TestCase
     test "should create animal" do
       visit animals_path
 
-      click_on 'New Animal'
+      click_on 'Nouvel Animal'
 
       fill_in 'Nom', with: @animal.nom    
-      fill_in 'Code', with: @animal.code    
-      fill_in 'Type animal', with: @animal.type_animal_id    
+      find('#type_animal').find(:xpath, 'option[2]').select_option
+      attach_file('avatar', Rails.root + 'app/assets/images/lion.jpg')   
 
-      click_on 'Create Animal'
+      click_on 'create-animal'
 
       assert_current_path animal_path(Animal.last)
       assert page.has_content?(@animal.nom)

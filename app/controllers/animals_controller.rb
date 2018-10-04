@@ -25,7 +25,7 @@ class AnimalsController < ApplicationController
   # POST /animals.json
   def create
     @animal = Animal.new(animal_params)
-
+    @animal.code = generateur_de_code(7)
     respond_to do |format|
       if @animal.save
         format.html { redirect_to @animal, notice: 'Animal was successfully created.' }
@@ -69,6 +69,6 @@ class AnimalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def animal_params
-      params.require(:animal).permit(:nom, :code, :type_animal_id)
+      params.require(:animal).permit(:nom, :code, :type_animal_id, :avatar)
     end
 end

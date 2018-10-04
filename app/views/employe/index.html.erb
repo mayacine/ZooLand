@@ -1,0 +1,33 @@
+
+<div class="card col-md-12" >
+  <div class="card-body">
+    <h5 class="card-title">Les Employés</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Liste</h6>
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Prenom</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Poste</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+      <tr>
+        <td><%= user.prenom %></td>
+        <td><%= user.nom %></td>
+        <td><%= user.email %></td>
+        <td><%= user.poste.libelle %></td>
+        <td><%= link_to 'Voir', "/employe/#{user.id}" %></td>
+        <td><%= link_to 'Editer', "employe/#{user.id}/edit"%></td>
+        <td><%= link_to 'Supprimer', "/employe/#{user.id}", method: :delete, data: { confirm: 'Est vous sure ?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  </div>
+</div>
+
