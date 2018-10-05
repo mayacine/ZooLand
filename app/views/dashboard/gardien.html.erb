@@ -1,2 +1,27 @@
-<h1>Dashboard#admin</h1>
-<p>Find me in app/views/dashboard/admin.html.erb</p>
+<div id="calendar"></div>
+
+<script>
+$( document ).ready(function() {
+    $('#calendar').fullCalendar({
+        header: {
+           left: 'prev,next today',
+           center: 'title',
+           right: 'month,agendaWeek,agendaDay'
+         },
+         height: 500,
+         selectable: true,
+         selectHelper: true,
+         editable: true,
+         selectable: true,
+         eventLimit: true,
+         events: '/taches.json',
+         eventClick: function(event, jsEvent, view) {
+          
+           //console.log("ddddddd");
+         
+         }
+     });
+     
+});
+
+</script>

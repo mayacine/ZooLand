@@ -4,7 +4,13 @@ class TachesController < ApplicationController
   # GET /taches
   # GET /taches.json
   def index
-    @taches = Tache.all
+    if current_user.poste.code == POSTE_ADMIN or current_user.poste.code == POSTE_MANAGER
+      @taches = Tache.all
+    elsif current_user.poste.code == POSTE_VISITEUR
+      @taches = []
+    else
+      @taches = Tache.where(user_id: current_user.id)
+    end
   end
 
   # GET /taches/1

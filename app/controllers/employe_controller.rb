@@ -10,6 +10,7 @@ class EmployeController < ApplicationController
   end
 
   def show
+    @taches = Tache.where(user_id: current_user.id)
   end
 
   def create

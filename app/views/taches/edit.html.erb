@@ -38,7 +38,7 @@
  <div class="form-group col-md-4">
       <%= form.label :affecté_a %>
       
-      <%= form.collection_select(:user_id, User.cible_affectation_by_poste, :id, :identification,{}, {:class => 'form-control', id: 'user-id'}) %>
+      <%= form.collection_select(:user_id, User.cible_affectation_by_poste(current_user), :id, :identification,{}, {:class => 'form-control', id: 'user-id'}) %>
     </div>
 
  

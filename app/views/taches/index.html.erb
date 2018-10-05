@@ -9,7 +9,7 @@
      <th>Libelle</th>
       <th>Code</th>
       <th>Animal</th>
-      <th>User</th>
+      <th>Assignée a</th>
       <th>Date debut</th>
       <th>Date fin</th>
       <th>Statut tache</th>
@@ -27,10 +27,14 @@
         <td><%= tach.date_debut %></td>
         <td><%= tach.date_fin %></td>
         <td><%= tach.statut_tache.libelle %></td>
-        <td><%= tach.type_tache.libelle %></td>
+        <% if current_user.peut_effectuer_tache(tach)%>
+          <td><%= link_to tach.type_tache.libelle.capitalize, "/effectuer_tache/#{tach.id}" ,{class: "btn btn-outline-primary btn-sm"} %></td>
+        <%else%>
+          <td><%= tach.type_tache.libelle %></td>
+        <%end%>
         <td><%= link_to 'Voir', tach %></td>
-        <td><%= link_to 'Editer', edit_tach_path(tach) %></td>
-        <td><%= link_to 'Supprimer', tach, method: :delete, data: { confirm: 'Est vous sur ?' } %></td>
+        <td><%= link_to 'Edit', edit_tach_path(tach) %></td>
+        <td><%= link_to 'Suppr', tach, method: :delete, data: { confirm: 'Est vous sur ?' } %></td>
       </tr>
     <% end %>
     </tbody>
