@@ -27,7 +27,7 @@
         <td><%= tach.date_debut %></td>
         <td><%= tach.date_fin %></td>
         <td><%= tach.statut_tache.libelle %></td>
-        <% if current_user.peut_effectuer_tache(tach)%>
+        <% if current_user.peut_effectuer_tache(tach) and tach.statut_tache.code != CODE_TACHE_FINI%>
           <td><%= link_to tach.type_tache.libelle.capitalize, "/effectuer_tache/#{tach.id}" ,{class: "btn btn-outline-primary btn-sm"} %></td>
         <%else%>
           <td><%= tach.type_tache.libelle %></td>

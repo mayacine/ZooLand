@@ -1,5 +1,5 @@
 class TachesController < ApplicationController
-  before_action :set_tach, only: [:show, :edit, :update, :destroy]
+  before_action :set_tach, only: [:show, :edit, :update, :destroy, :effectuer_tache]
 
   # GET /taches
   # GET /taches.json
@@ -18,6 +18,19 @@ class TachesController < ApplicationController
   def show
   end
 
+  def effectuer_tache
+    @tach.statut_tache_id = StatutTache.find_by(code: CODE_TACHE_FINI).id
+    respond_to do |format|
+      if @tach.save
+        format.html { redirect_to @tach, notice: 'Tache effectuée avec succés.' }
+        format.json { render :show, status: :created, location: @tach }
+      else
+        format.html { render :new }
+        format.json { render json: @tach.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
   # GET /taches/new
   def new
     @tach = Tache.new

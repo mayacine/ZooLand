@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/employe/new'
   get '/employe', to: "employe#index"
   get '/employe/:id', to: "employe#show"
+  get '/effectuer_tache/:id', to: "taches#effectuer_tache"
   get '/employe/:id/edit', to: "employe#edit"
   post '/employe/create', to: 'employe#create'
   put '/employe/:id', to: 'employe#update'
